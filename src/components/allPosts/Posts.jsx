@@ -1,7 +1,10 @@
-export const Posts = ({allPosts, Likes, likes}) => {
+import { useEffect, useState } from "react"
+
+export const Posts = ({filteredPosts, Likes, likes}) => {
+    
     return (
         <div>
-            {allPosts.map(post => {
+            {filteredPosts.map(post => {
                 return (
                     <div className="post card shadow my-4 p-3 border" key={post.id}>
                         <div className="d-flex justify-content-between">

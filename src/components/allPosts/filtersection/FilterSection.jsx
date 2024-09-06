@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { getTopics } from "../../../services/getTopics"
 
-export const FilterSection = () => {
+export const FilterSection = ({setSelectedTopic,setTextValue}) => {
     const [allTopics, setAllTopics] = useState([])
-    const [selectedTopic, setSelectedTopic] = useState([])
+    
 
     useEffect(() => {
         getTopics().then( topicsArray => {
@@ -12,11 +12,11 @@ export const FilterSection = () => {
     }, [])
 
     return (
-    <div className="filter-section">
+    <div className="filter-section  m-2 d-flex justify-content-between">
         <div>
-            <label htmlFor="dropdown">Choose an option:</label>
-            <select id="dropdown" defaultValue="">
-                <option value="" disabled selected>select a topic</option>
+            <label htmlFor="dropdown">Topic: </label>
+            <select id="dropdown"  onChange={(event) => setSelectedTopic(event.target.value)}>
+                <option value="" >all</option>
                 {allTopics.map(topic => {
                     return (
                         <option value={topic.id} key={topic.id}>{topic.topic}</option>
@@ -24,6 +24,9 @@ export const FilterSection = () => {
                 })}
                 
             </select>
+        </div>
+        <div className="post-search ">
+            <input type="text"placeholder="search posts" onChange={event => setTextValue(event.target.value)}/>
         </div>
 
     </div>
