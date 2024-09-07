@@ -31,7 +31,7 @@ export const PostList = ()=> {
 
             const selectedObjects = allPosts.filter(post => post.topicsId === parseInt(selectedTopic))
             filterObjects.push(...selectedObjects)
-            setTextValue("")
+            
         }        
         setFilteredPosts(filterObjects)
         setFilteredTopic(filterObjects)
@@ -50,7 +50,7 @@ export const PostList = ()=> {
 
     return (<>
         <div className="container">
-            <FilterSection setSelectedTopic={setSelectedTopic} setTextValue={setTextValue}/>
+            <FilterSection setSelectedTopic={setSelectedTopic} setTextValue={setTextValue} textValue={textValue}/>
         </div>
         <div className="all-posts-container container">
             <Posts filteredPosts={filteredPosts} Likes={Likes} likes={likes}/>  
