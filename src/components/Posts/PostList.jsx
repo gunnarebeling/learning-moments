@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { getAllPosts } from "../../services/getposts"
-import { getLikes } from "../../services/getLIkes"
+import { getLikes } from "../../services/LIkes"
 import { Likes } from "./Likes"
 import { Posts } from "./Posts"
 import { FilterSection } from "./filtersection/FilterSection"

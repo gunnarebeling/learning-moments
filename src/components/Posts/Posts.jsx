@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { Likes } from "./Likes"
 
-export const Posts = ({filteredPosts, Likes, likes}) => {
+export const Posts = ({filteredPosts, likes}) => {
     
     return (
         <div>
@@ -8,7 +10,9 @@ export const Posts = ({filteredPosts, Likes, likes}) => {
                 return (
                     <div className="post card shadow my-4 p-3 border" key={post.id}>
                         <div className="d-flex justify-content-between">
-                            <div className="post-title display-6">{post.title}</div>
+                            <Link to={`/${post.id}`}>
+                                <div className="post-title display-6">{post.title}</div>
+                            </Link>
                             <Likes likes={likes} post={post}/>
                         </div>
                         <div className="border rounded mt-3 p-2">{post.description}</div>

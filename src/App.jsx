@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import { PostList } from "./components/allPosts/PostList"
 import { ApplicationViews } from "./views/ApplicationViews"
 import {Authorized} from './views/Authorized'
 import { Register } from "./components/auth/Register"
