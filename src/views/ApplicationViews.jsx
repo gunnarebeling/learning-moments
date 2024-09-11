@@ -3,6 +3,7 @@ import { PostList } from "../components/Posts/PostList"
 import { NavBar } from "../components/Nav/NavBar"
 import { useEffect, useState } from "react"
 import { PostDetails } from "../components/Posts/PostDetails"
+import { PostForm } from "../components/forms/PostForm"
 
 export  const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState()
@@ -27,6 +28,7 @@ export  const ApplicationViews = () => {
                    <Route index element={<PostDetails currentUser={currentUser}/>}/>
                    <Route path="edit" element={<>edit profile</>}/> 
                 </Route> 
+                <Route path="/newpost" element={<PostForm currentUser={currentUser}/>}/>
                 
             </Route>
         </Routes>

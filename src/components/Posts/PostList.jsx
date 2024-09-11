@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { getAllPosts } from "../../services/getposts"
+import { getAllPosts } from "../../services/postservices"
 import { getLikes } from "../../services/LIkes"
 import { Likes } from "./Likes"
 import { Posts } from "./Posts"

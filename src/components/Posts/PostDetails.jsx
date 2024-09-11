@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getAllPosts } from "../../services/getposts"
+import { getAllPosts } from "../../services/postservices"
 import { getLikes, postLike, updateLike } from "../../services/LIkes"
 import { Likes } from "./Likes"
 import { getUserById } from "../../services/getUsers"
