@@ -4,14 +4,27 @@ import { NavBar } from "../components/Nav/NavBar"
 import { useEffect, useState } from "react"
 import { PostDetails } from "../components/Posts/PostDetails"
 import { PostForm } from "../components/forms/PostForm"
+import { MyPosts } from "../components/Posts/MyPosts"
+import { getLikes } from "../services/LIkes"
 
 export  const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState()
+    const [likes, setLikes] = useState([])
+    const getAndSetLikes = () => {
+        getLikes().then(likesObj => {
+            setLikes(likesObj)
+        })
+    }
+    
+    
     useEffect(()=> {
         const currentUserObj = localStorage.getItem('learning_user')
         const parsedCurrentUser = JSON.parse(currentUserObj)
         setCurrentUser(parsedCurrentUser)
+        getAndSetLikes()
+        
         }, [])
+    
     return (
         <Routes>
             <Route 
@@ -29,6 +42,7 @@ export  const ApplicationViews = () => {
                    <Route path="edit" element={<>edit profile</>}/> 
                 </Route> 
                 <Route path="/newpost" element={<PostForm currentUser={currentUser}/>}/>
+                <Route path="/myposts" element={<MyPosts currentUser={currentUser} likes={likes}/>}/>
                 
             </Route>
         </Routes>

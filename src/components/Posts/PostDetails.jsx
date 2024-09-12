@@ -25,8 +25,8 @@ export const PostDetails = ({currentUser}) => {
     getAndSetLikes()
 } , [])
 useEffect(() => {
-    if (currentPost) {
-        getUserById(currentPost.usersId).then(res => {
+    if (!Object.keys(currentPost).length === 0) {
+        getUserById(currentPost?.usersId).then(res => {
             const userObj = res
             setPostAuthor(userObj)
         })
@@ -71,7 +71,7 @@ useEffect(() => {
                     <div className="post-title display-6">{currentPost.title}</div>
                    <span>
                     <Likes likes={likes} post={currentPost}/>
-                    {((currentPost.usersId === currentUser.id)? 
+                    {((currentPost.usersId === currentUser?.id)? 
                         <Link to={`edit`}>
                             <button >Edit</button>
                         </Link>: 

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { getTopics } from "../../services/getTopics"
 import { submitNewPost } from "../../services/postservices"
+import {  useNavigate } from "react-router-dom"
 
 export const PostForm = ({currentUser}) => {
     const [allTopics, setAllTopics] = useState([])
     const [selectedTopic, setSelectedTopic] = useState(1)
     const [title, setTitle] = useState("")
     const [ body, setBody] = useState("")
+    const navigate = useNavigate()
     useEffect(() => {
         getTopics().then(topicObj => {
             setAllTopics(topicObj)
@@ -16,7 +18,8 @@ export const PostForm = ({currentUser}) => {
         const selectedValue = parseInt(event.target.value)
         setSelectedTopic(selectedValue)
     }
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault()
         const newPostData ={
             usersId: currentUser.id,
             title: title,
@@ -27,6 +30,7 @@ export const PostForm = ({currentUser}) => {
 
         }
         submitNewPost(newPostData)
+        navigate(`/myposts`)
 
     }
     return (

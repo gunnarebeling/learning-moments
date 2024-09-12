@@ -13,3 +13,11 @@ export const submitNewPost = (postObj) => {
    })
 }
 
+export const deletePost = (post) => {
+   return fetch(`http://localhost:8088/posts/${post}`,{
+      method: 'DELETE',
+      headers: {
+         'Content-Type': 'application/json'
+      }
+   })
+}
