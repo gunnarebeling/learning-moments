@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link,  useParams } from "react-router-dom"
 import { getAllPosts } from "../../services/postservices"
 import { getLikes, postLike, updateLike } from "../../services/LIkes"
 import { Likes } from "./Likes"
@@ -10,7 +10,7 @@ export const PostDetails = ({currentUser}) => {
     const [likes, setLikes] = useState([])
     const [postAuthor, setPostAuthor] = useState({})
     const {postId} = useParams()
-    const navigate = useNavigate()
+    
     const getAndSetLikes = () => {
         getLikes().then(likesObj => {
             setLikes(likesObj)
@@ -23,9 +23,9 @@ export const PostDetails = ({currentUser}) => {
     }).then(()=>{
     })
     getAndSetLikes()
-} , [])
+} , [postId])
 useEffect(() => {
-    if (!Object.keys(currentPost).length === 0) {
+    if (!(Object.keys(currentPost).length === 0)) {
         getUserById(currentPost?.usersId).then(res => {
             const userObj = res
             setPostAuthor(userObj)
@@ -60,9 +60,7 @@ useEffect(() => {
         }
         
     }
-    const handleEdit = (event) =>{
-        
-    }
+    
     return (
         <div className="post-container">
             <div className="post card mx-3 shadow my-4 p-3 border" >

@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react"
-import { FilterSection } from "./filtersection/FilterSection"
-import { Posts } from "./Posts"
 import { deletePost, getAllPosts } from "../../services/postservices"
-import { Likes } from "./Likes"
 import { useNavigate } from "react-router-dom"
 
 
-export const MyPosts = ({currentUser, likes}) => {
+export const MyPosts = ({currentUser}) => {
     const [usersPosts, setUsersPosts] = useState([])
     const navigate = useNavigate()
     const getAndSetPosts = () => {

@@ -6,6 +6,7 @@ import { PostDetails } from "../components/Posts/PostDetails"
 import { PostForm } from "../components/forms/PostForm"
 import { MyPosts } from "../components/Posts/MyPosts"
 import { getLikes } from "../services/LIkes"
+import { EditPost } from "../components/forms/EditPost"
 
 export  const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState()
@@ -39,7 +40,7 @@ export  const ApplicationViews = () => {
                 <Route path="/profile" element={<>profile</>}/>
                 <Route path=":postId">
                    <Route index element={<PostDetails currentUser={currentUser}/>}/>
-                   <Route path="edit" element={<>edit profile</>}/> 
+                   <Route path="edit" element={<EditPost/>}/> 
                 </Route> 
                 <Route path="/newpost" element={<PostForm currentUser={currentUser}/>}/>
                 <Route path="/myposts" element={<MyPosts currentUser={currentUser} likes={likes}/>}/>

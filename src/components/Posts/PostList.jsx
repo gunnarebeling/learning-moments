@@ -35,7 +35,7 @@ export const PostList = ()=> {
         }        
         setFilteredPosts(filterObjects)
         setFilteredTopic(filterObjects)
-    }, [selectedTopic])
+    }, [selectedTopic, allPosts])
 
     useEffect(() => {
         let filterText = []
@@ -46,7 +46,7 @@ export const PostList = ()=> {
     }
     const filterValue = filterText.filter(post => (post.title.toLowerCase().includes(textValue.toLowerCase())) || (post.description.toLowerCase().includes(textValue.toLowerCase())))
         setFilteredPosts(filterValue)
-    },[textValue])
+    },[textValue, allPosts, filteredTopic])
 
     return (<>
         <div className="container">
