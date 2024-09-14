@@ -18,6 +18,7 @@ export const MyPosts = ({currentUser}) => {
             getAndSetPosts()
             
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser])
     const handlePostClick = (event) => {
         navigate(`/${event.target.dataset.id}`)

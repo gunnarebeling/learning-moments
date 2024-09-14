@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link,  useParams } from "react-router-dom"
+import { Link,  useNavigate,  useParams } from "react-router-dom"
 import { getAllPosts } from "../../services/postservices"
 import { getLikes, postLike, updateLike } from "../../services/LIkes"
 import { Likes } from "./Likes"
@@ -10,6 +10,7 @@ export const PostDetails = ({currentUser}) => {
     const [likes, setLikes] = useState([])
     const [postAuthor, setPostAuthor] = useState({})
     const {postId} = useParams()
+    const navigate = useNavigate()
     
     const getAndSetLikes = () => {
         getLikes().then(likesObj => {
@@ -38,8 +39,13 @@ useEffect(() => {
         
         const matchedLike = likes.find(like => (like.usersId === currentUser.id) && (currentPost.id === like.postsId))
         if (matchedLike) {
-            let copy = {...matchedLike}
-            copy.liked = !copy.liked
+            let copy = {
+                id: matchedLike.id,
+                usersId: matchedLike.usersId,
+                postsId: matchedLike.postsId,
+                liked: !matchedLike.liked,
+            }
+            
             updateLike(copy).then(() => {
                 getAndSetLikes()
             })
@@ -58,6 +64,7 @@ useEffect(() => {
                 getAndSetLikes()
             })
         }
+        navigate('/favorites')
         
     }
     

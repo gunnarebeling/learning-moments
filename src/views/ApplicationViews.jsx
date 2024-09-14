@@ -7,6 +7,7 @@ import { PostForm } from "../components/forms/PostForm"
 import { MyPosts } from "../components/Posts/MyPosts"
 import { getLikes } from "../services/LIkes"
 import { EditPost } from "../components/forms/EditPost"
+import { Favorites } from "../components/Posts/Favorites"
 
 export  const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState()
@@ -44,6 +45,7 @@ export  const ApplicationViews = () => {
                 </Route> 
                 <Route path="/newpost" element={<PostForm currentUser={currentUser}/>}/>
                 <Route path="/myposts" element={<MyPosts currentUser={currentUser} likes={likes}/>}/>
+                <Route path="/favorites" element={<Favorites currentUser={currentUser} likes={likes}/>}/>
                 
             </Route>
         </Routes>

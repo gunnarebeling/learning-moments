@@ -1,5 +1,5 @@
 export const getLikes = () => {
-    return fetch(`http://localhost:8088/likes`).then(res => res.json())
+    return fetch(`http://localhost:8088/likes?_expand=posts`).then(res => res.json())
 }
 export const postLike = (LikeData) => {
     return fetch(`http://localhost:8088/likes`, {
@@ -21,4 +21,10 @@ export const updateLike = (likeData) => {
     }
         
     )
+}
+
+export const deleteLike = (likeData) => {
+    return fetch(`http://localhost:8088/likes/${likeData.id}`, {
+        method: 'DELETE'
+    })
 }
