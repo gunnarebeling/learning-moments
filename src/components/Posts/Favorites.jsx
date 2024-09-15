@@ -27,6 +27,7 @@ export const Favorites = ({ currentUser}) => {
     useEffect(() => {
         getAndSetLikedPosts()
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [likes, currentUser ])
     const handlePostClick = (event) => {
         navigate(`/${event.target.dataset.id}`)

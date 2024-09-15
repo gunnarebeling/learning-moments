@@ -87,7 +87,7 @@ useEffect(() => {
                 </div>
                 <div className="post-info">
                     <div className="author">
-                        <div><span>author: {postAuthor.fullName}</span></div>
+                        <div><span onClick={() => navigate(`/profile/${postAuthor.id}`)}>author: {postAuthor.fullName}</span></div>
                     </div>
                     <div className="topic">
                         <div><span>Topic: {currentPost.topics?.topic}</span></div>                        
