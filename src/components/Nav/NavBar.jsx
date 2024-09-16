@@ -17,7 +17,7 @@ export const NavBar = ({currentUser}) => {
                 <Link className="nav-link" to='/favorites' >Favorites</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to={`/profile/${currentUser?.id}`} >Profile</Link>
+                <Link className="nav-link" to={`profile/${currentUser?.id}`} >Profile</Link>
             </li>
             {localStorage.getItem("learning_user") ? (
                 <li className="nav-item ms-auto">

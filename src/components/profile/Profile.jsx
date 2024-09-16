@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { getUserById } from "../../services/getUsers"
+import { useNavigate, useParams } from "react-router-dom"
+import { getUserById } from "../../services/Users"
 import { getAllPosts } from "../../services/postservices"
 
 export const Profile = ({currentUser}) => {
     const [user , setUser] = useState({})
     const [userPostCount, setUserPostCount] = useState(0)
     const {userId} = useParams()
+    const navigate = useNavigate()
     const getAndSetPostCount = () => {
         getAllPosts().then((posts) => {
             const postFilter = posts.filter(post => post.usersId === parseInt(userId))
@@ -23,7 +24,15 @@ export const Profile = ({currentUser}) => {
     }, [userId])
     useEffect(() => {
         getAndSetPostCount()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
+
+    const handleEdit = (event) => {
+        event.preventDefault()
+        navigate(`/profile/${userId}/edit`)
+
+
+    }
 
     return (
         <div >
@@ -42,7 +51,7 @@ export const Profile = ({currentUser}) => {
                 </div>
                 {(parseInt(userId) === currentUser?.id) &&
                 <div className="text-center">
-                    <button className="btn btn-primary">edit</button>
+                    <button className="btn btn-primary" onClick={handleEdit}>edit</button>
 
                 </div>}
 
